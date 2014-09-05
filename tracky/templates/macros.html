@@ -1,0 +1,21 @@
+{% macro render_activity(activity) %}
+<div class="row">
+    <div class="col-md-2 text-right metadata">
+        <ul class="list-unstyled">
+            <li>
+                {{ activity.entry_date | dateformat("%d/%m/%y") }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <h1>
+             {{ activity.title }}
+        </h1>
+                Activity Type: {{ activity.activity }} <br>
+                Notes: {{ activity.notes | safe }} <br>
+                Start Time: {{ activity.start_time }} <br>
+                End Time: {{ activity.end_time }} <br>
+                Staring Location: {{ activity.start_location }} <br>
+    </div>
+</div>
+{% endmacro %}
