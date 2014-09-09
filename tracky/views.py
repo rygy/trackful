@@ -1,6 +1,6 @@
 import requests
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import render_template, request, flash, redirect, url_for
 from forms import NewActivity, NewMeal
@@ -104,12 +104,29 @@ def meals():
     )
 
 
+@app.route('/meals/show/<string:meal_type>')
+def view_by_meal(meal_type=None):
+    meals = session.query(Meal).filter(Meal.meal == meal_type)
+
+    meals = meals.order_by(Meal.entry_date.desc())
+    meals = meals.all()
+
+    return render_template('meals.html',
+                           meals=meals
+    )
+
+
 @app.route('/activity/<int:activity_id>')
 def view_activity(activity_id=0):
     activity = session.query(Activity).get(activity_id)
 
-    start_location = get_cords(activity.start_location)
-    end_location = get_cords(activity.end_location)
+    current = datetime.utcnow()
+    past_24_hours = current - timedelta(hours=24)
+
+    activity2 = session.query(Activity).filter(Activity.entry_date.between(current, past_24_hours))
+
+    print activity2
+    print activity2.all()
 
     return render_template('activity.html', activity=activity)
 
@@ -129,6 +146,7 @@ def add_activity():
             start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
             end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
             duration = str(end_time - start_time)
+
             if form.waypoints.data:
                 waypoints = form.waypoints.data
             else:
@@ -148,6 +166,7 @@ def add_activity():
 
             session.add(activity)
             session.commit()
+
         except ValueError:
             flash('Please enter date in correct format')
             return render_template('add_activity.html', form=form)
@@ -249,6 +268,7 @@ def delete_meal(meal_id=None):
 
     return redirect(url_for('meals'))
 
+
 @app.route('/activity/<int:activity_id>/delete', methods=['GET', 'POST'])
 def delete_activity(activity_id=None):
 
@@ -258,4 +278,6 @@ def delete_activity(activity_id=None):
 
     flash('Activity Deleted!')
 
-    return  redirect(url_for('entries'))
+    return redirect(url_for('entries'))
+
+

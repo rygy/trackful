@@ -39,7 +39,7 @@
     </div>
     <div class="col-md-10">
         <h1>
-             <a href="{{ url_for('view_meal', meal_id = meal.meal_id) }}"> {{ meal.meal }}</a>
+             <a href="{{ url_for('view_by_meal', meal_type=meal.meal) }}"> {{ meal.meal }}</a>
         </h1>
                 Meal Contents: {{ meal.contents }} <br>
                 Meal Calories: {{ meal.calories }} <br>
