@@ -16,6 +16,7 @@ certifi==14.05.14
 gunicorn==19.1.0
 itsdangerous==0.24
 mistune==0.3.1
+psycopg2==2.5.4
 requests==2.4.0
 selenium==2.42.1
 splinter==0.6.0
