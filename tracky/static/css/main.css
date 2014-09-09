@@ -2,3 +2,11 @@ div.metadata {
     margin-top: 20px;
     font-size: 1.5em;
 }
+
+div.navbar {
+    text-align: center;
+}
+
+navbar-brand {
+    text-align: center;
+}

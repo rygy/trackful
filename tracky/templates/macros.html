@@ -9,13 +9,39 @@
     </div>
     <div class="col-md-10">
         <h1>
-             {{ activity.title }}
+             <a href="{{ url_for('view_activity', activity_id = activity.activity_id) }}"> {{ activity.title }}</a>
         </h1>
                 Activity Type: {{ activity.activity }} <br>
                 Notes: {{ activity.notes | safe }} <br>
                 Start Time: {{ activity.start_time }} <br>
                 End Time: {{ activity.end_time }} <br>
                 Staring Location: {{ activity.start_location }} <br>
+                Ending Location: {{ activity.end_location }} <br>
+                Entry Date: {{ activity.entry_date }} <br>
+                Activity Duration: {{ activity.duration }} <br>
+                Calories Burned: {{ activity.calories }} <br><br>
+                <a href="{{ url_for('gmap', activity_id = activity.activity_id) }}"> View Map</a> |
+                <a href="{{ url_for('edit_activity', activity_id = activity.activity_id) }}"> Edit Activity</a>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro render_meal(meal) %}
+<div class="row">
+    <div class="col-md-2 text-right metadata">
+        <ul class="list-unstyled">
+            <li>
+                {{ meal.entry_date | dateformat('%d/%m/%y') }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <h1>
+             {{ meal.meal }}
+        </h1>
+                Meal Contents: {{ meal.contents }} <br>
+                Meal Calories: {{ meal.calories }} <br>
+                Meal Date: {{ meal.entry_date | dateformat('%d/%m/%y') }}
     </div>
 </div>
 {% endmacro %}

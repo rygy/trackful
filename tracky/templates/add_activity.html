@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block content %}
+<h1>
+    Add A New Activity
+</h1>
+    <form method="POST" action="/activity/add">
+      <d1>
+          {{ render_field(form.title) }}
+          {{ render_field(form.activity) }}
+          {{ render_field(form.start_time, placeholder=form.start_time.description) }}
+          {{ render_field(form.end_time, placeholder=form.start_time.description) }}
+          {{ render_field(form.start_location) }}
+          {{ render_field(form.end_location) }}
+          {{ render_field(form.notes) }}
+      </d1>
+    <input type="submit" value="Go">
+</form>
+{% endblock %}

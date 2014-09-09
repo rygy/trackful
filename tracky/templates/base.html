@@ -7,11 +7,8 @@
 
         <title>Blogful</title>
 
-
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <!-- Blog -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+         <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 
         <!-- JavaScript -->
         <!-- jQuery -->
@@ -31,7 +28,9 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url_for('entries') }}">Tracky</a>
-                    
+                    <a class="navbar-brand" href="{{ url_for('add_activity') }}">Add an Activity</a>
+                    <a class="navbar-brand" href="{{ url_for('add_meal') }}">Add a Meal</a>
+                    <a class="navbar-brand" href="{{ url_for('meals') }}">View Meal Entries</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

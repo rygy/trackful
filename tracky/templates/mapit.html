@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+{% block content %}
+    <h3> Activity Map </h3>
+        {{ maps['start_end_map'].html }}
+        {{ maps['start_end_map'].js }}
+{% endblock %}

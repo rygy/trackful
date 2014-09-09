@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+{% block content %}
+
+{% for meal in meals %}
+{{ macros.render_meal(meal) }}
+{% endfor %}
+
+{% endblock %}
