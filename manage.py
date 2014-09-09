@@ -1,5 +1,6 @@
 import datetime
 import os
+import sys
 import getpass
 
 from flask.ext.script import Manager
@@ -55,4 +56,9 @@ migrate = Migrate(app, DB(Base.metadata))
 manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
+    try:
+        t = sys.argv[1]
+        pass
+    except IndexError:
+        run()
     manager.run()
