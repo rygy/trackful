@@ -19,9 +19,11 @@
                 Ending Location: {{ activity.end_location }} <br>
                 Entry Date: {{ activity.entry_date }} <br>
                 Activity Duration: {{ activity.duration }} <br>
-                Calories Burned: {{ activity.calories }} <br><br>
+                Calories Burned: {{ activity.calories }} <br>
+                Additional Waypoints: {{ activity.waypoints }} <br><br>
                 <a href="{{ url_for('gmap', activity_id = activity.activity_id) }}"> View Map</a> |
-                <a href="{{ url_for('edit_activity', activity_id = activity.activity_id) }}"> Edit Activity</a>
+                <a href="{{ url_for('edit_activity', activity_id = activity.activity_id) }}"> Edit Activity</a> |
+                <a href="{{ url_for('delete_activity', activity_id = activity.activity_id) }}"> Delete Activity</a>
     </div>
 </div>
 {% endmacro %}
@@ -37,11 +39,13 @@
     </div>
     <div class="col-md-10">
         <h1>
-             {{ meal.meal }}
+             <a href="{{ url_for('view_meal', meal_id = meal.meal_id) }}"> {{ meal.meal }}</a>
         </h1>
                 Meal Contents: {{ meal.contents }} <br>
                 Meal Calories: {{ meal.calories }} <br>
-                Meal Date: {{ meal.entry_date | dateformat('%d/%m/%y') }}
+                Meal Date: {{ meal.entry_date | dateformat('%d/%m/%y') }} <br><br>
+                <a href="{{ url_for('edit_meal', meal_id = meal.meal_id) }}"> Edit Meal</a> |
+                <a href="{{ url_for('delete_meal', meal_id = meal.meal_id) }}"> Delete Meal</a>
     </div>
 </div>
 {% endmacro %}

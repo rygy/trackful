@@ -23,6 +23,7 @@ class Activity(Base):
     notes = Column(Text)
     calories = Column(Integer)
     entry_date = Column(DateTime, default=datetime.datetime.now)
+    waypoints = Column(String(1024))
 
 
 class Meal(Base):
