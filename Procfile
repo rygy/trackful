@@ -1,1 +1,1 @@
-web: gunicorn manage.py: tracky
+web: gunicorn manage:app
