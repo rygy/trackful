@@ -5,6 +5,7 @@ import getpass
 
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.moment import Moment
 
 from werkzeug.security import generate_password_hash
 
@@ -16,6 +17,8 @@ from flask.ext.googlemaps import GoogleMaps
 
 manager = Manager(app)
 GoogleMaps(app)
+moment = Moment(app)
+
 
 @manager.command
 def run():

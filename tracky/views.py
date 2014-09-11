@@ -47,7 +47,7 @@ def gmap(activity_id=0):
     except AttributeError:
         pass
 
-    print markers
+    #print markers
 
     start_end_map = Map(
         style="height:500px;width:500px;margin:0;",
@@ -63,6 +63,9 @@ def gmap(activity_id=0):
             'start_end_map': start_end_map
     }
 
+    print dir(maps['start_map'])
+    print maps['start_end_map'].identifier
+    print maps['start_end_map'].center[0]
     return render_template('mapit.html', maps=maps)
 
 
@@ -281,3 +284,6 @@ def delete_activity(activity_id=None):
     return redirect(url_for('entries'))
 
 
+@app.route('/test_date')
+def test_date():
+    return render_template('datetime.html')
