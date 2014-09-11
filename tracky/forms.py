@@ -10,8 +10,8 @@ class NewActivity(Form):
         ('Cycling', 'Cycling'),
         ('Walking', 'Walking')],
                            validators=[DataRequired()])
-    start_time = StringField('Starting Date / Time', description='Ex: Jun 4 2014 5:23PM', validators=[DataRequired()])
-    end_time = StringField('Ending Date / Time', description='Ex: Jun 4 2014 5:23PM', validators=[DataRequired()])
+    start_time = StringField('Starting Date / Time', description='2014-05-04 16:23:00', validators=[DataRequired()])
+    end_time = StringField('Ending Date / Time', description='2014-05-04 17:23:00 ', validators=[DataRequired()])
     start_location = StringField('Starting Location', validators=[DataRequired()])
     end_location = StringField('Ending Location', validators=[DataRequired()])
     notes = StringField('Notes', validators=[DataRequired()])

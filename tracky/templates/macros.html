@@ -17,7 +17,7 @@
                 End Time: {{ activity.end_time }} <br>
                 Staring Location: {{ activity.start_location }} <br>
                 Ending Location: {{ activity.end_location }} <br>
-                Entry Date: {{ activity.entry_date }} <br>
+                Entry Date: {{ activity.entry_date | dateformat("%d/%m/%y") }} <br>
                 Activity Duration: {{ activity.duration }} <br>
                 Calories Burned: {{ activity.calories }} <br>
                 Additional Waypoints: {{ activity.waypoints }} <br><br>

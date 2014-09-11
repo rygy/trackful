@@ -141,9 +141,10 @@ def add_activity():
 
     if request.method == 'POST':
         try:
-            start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
-            end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
-            duration = str(end_time - start_time)
+
+            #start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
+            #end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
+            #duration = str(end_time - start_time)
 
             if form.waypoints.data:
                 waypoints = form.waypoints.data
@@ -152,9 +153,9 @@ def add_activity():
 
             activity = Activity(title=form.title.data,
                                 activity=form.activity.data,
-                                start_time=start_time,
-                                end_time=end_time,
-                                duration=duration,
+                                start_time=form.start_time.data,
+                                end_time=form.end_time.data,
+                                duration=form.end_time.data - form.start_time.data,
                                 start_location=form.start_location.data,
                                 end_location=form.end_location.data,
                                 notes=form.notes.data,
@@ -165,7 +166,8 @@ def add_activity():
             session.add(activity)
             session.commit()
 
-        except ValueError:
+        except ValueError as e:
+            print e
             flash('Please enter date in correct format')
             return render_template('add_activity.html', form=form)
 
@@ -205,15 +207,15 @@ def edit_activity(activity_id=None):
 
     if request.method == 'POST':
         try:
-            start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
-            end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
-            duration = str(activity.end_time - activity.start_time)
+            #start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
+            #end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
+            #duration = str(activity.end_time - activity.start_time)
 
             activity.title = form.title.data
             activity.activity = form.activity.data
-            activity.start_time = start_time
-            activity.end_time = end_time
-            activity.duration = duration
+            activity.start_time = form.start_time.data
+            activity.end_time = form.end_time.data
+            activity.duration = timedelta()
             activity.start_location = form.start_location.data
             activity.end_location = form.end_location.data
             activity.notes = form.notes.data
