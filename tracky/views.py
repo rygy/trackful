@@ -47,8 +47,6 @@ def gmap(activity_id=0):
     except AttributeError:
         pass
 
-    #print markers
-
     start_end_map = Map(
         style="height:500px;width:500px;margin:0;",
         identifier="view-side",
@@ -63,9 +61,6 @@ def gmap(activity_id=0):
             'start_end_map': start_end_map
     }
 
-    print dir(maps['start_map'])
-    print maps['start_end_map'].identifier
-    print maps['start_end_map'].center[0]
     return render_template('mapit.html', maps=maps)
 
 
