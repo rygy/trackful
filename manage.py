@@ -51,8 +51,8 @@ def seed_activites():
     session.commit()
 
 
-@manager.command()
-def seed_meals():
+#@manager.command()
+#def seed_meals():
 
 
 
