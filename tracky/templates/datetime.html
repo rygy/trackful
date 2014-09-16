@@ -2,8 +2,17 @@
 {% import "macros.html" as macros %}
 
 {% block content %}
-        <input data-provide="datepicker">
-    <script type="text/javascript">
-      $('#datepicker').datepicker()
-    </script>
+     <form>
+        <input type="date">
+    </form>
+
+    <script>
+        var i = document.createElement("input");
+        i.setAttribute("type", "date");
+        if (i.type == "text") {
+    // No native date picker support :(
+    // Use Dojo/jQueryUI/YUI/Closure to create one,
+    // then dynamically replace that <input> element.
+            }
+</script>
 {% endblock %}

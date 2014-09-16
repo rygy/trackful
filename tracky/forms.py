@@ -30,3 +30,4 @@ class NewMeal(Form):
 
     contents = StringField('Meal Contents')
     calories = StringField('Total Calories')
+    date = StringField('Entry Date', description='Optional alternate entry date: 2014-05-04 16:23:00')

@@ -155,7 +155,7 @@ def add_activity():
                                 activity=form.activity.data,
                                 start_time=form.start_time.data,
                                 end_time=form.end_time.data,
-                                duration=form.end_time.data - form.start_time.data,
+                                #duration=form.end_time.data - form.start_time.data,
                                 start_location=form.start_location.data,
                                 end_location=form.end_location.data,
                                 notes=form.notes.data,
@@ -186,7 +186,8 @@ def add_meal():
 
         meal = Meal(meal=form.meal.data,
                     contents=form.contents.data,
-                    calories=form.calories.data
+                    calories=form.calories.data,
+                    entry_date=form.date.data
         )
 
         session.add(meal)
