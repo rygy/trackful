@@ -10,7 +10,7 @@
           {{ render_field(form.meal) }}
           {{ render_field(form.contents) }}
           {{ render_field(form.calories) }}
-          {{ render_field(form.date) }}
+          {{ render_field(form.date, placeholder=form.date.description) }}
       </d1>
     <input type="submit" value="Go">
 </form>
