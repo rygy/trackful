@@ -43,7 +43,10 @@ def gmap(activity_id=0):
 
     try:
         for coord in activity.waypoints.split():
-            markers.append((get_cords(coord)['lat'], get_cords(coord)['lng']))
+            try:
+                markers.append((get_cords(coord)['lat'], get_cords(coord)['lng']))
+            except TypeError:
+                pass
     except AttributeError:
         pass
 
@@ -75,8 +78,10 @@ def get_cords(location):
 
     r = requests.get(url, params=params)
 
-    return r.json()['results'][0]['geometry']['location']
-
+    try:
+        return r.json()['results'][0]['geometry']['location']
+    except IndexError:
+        return None
 
 @app.route("/")
 def entries():
