@@ -27,7 +27,7 @@ def run():
 
 
 @manager.command
-def seed():
+def seed_activites():
 
     content = """An Example pre-populated activity entry - Just some notes..."""
 
@@ -49,6 +49,11 @@ def seed():
         )
         session.add(entry)
     session.commit()
+
+
+@manager.command()
+def seed_meals():
+
 
 
 class DB(object):
