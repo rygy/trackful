@@ -2,7 +2,8 @@
 {% import 'macros.html' as macros %}
 {% block content %}
     <h3> Starting Point </h3>
-        {% with start_map=googlemap_obj("start-map",
+
+    {% with start_map=googlemap_obj("start-map",
                 maps['start_map'].center[0],
                 maps['start_map'].center[1],
                 markers=maps['start_map'].markers) %}

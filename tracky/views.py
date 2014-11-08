@@ -44,7 +44,8 @@ def gmap(activity_id=0):
     try:
         for coord in activity.waypoints.split():
             try:
-                markers.append((get_cords(coord)['lat'], get_cords(coord)['lng']))
+                markers.append((get_cords(coord)['lat'],
+                                get_cords(coord)['lng']))
             except TypeError:
                 pass
     except AttributeError:
@@ -62,7 +63,7 @@ def gmap(activity_id=0):
     maps = {'start_map': start_map,
             'end_map': end_map,
             'start_end_map': start_end_map
-    }
+        }
 
     return render_template('mapit.html', maps=maps)
 
@@ -82,6 +83,7 @@ def get_cords(location):
         return r.json()['results'][0]['geometry']['location']
     except IndexError:
         return None
+
 
 @app.route("/")
 def entries():
@@ -126,7 +128,8 @@ def view_activity(activity_id=0):
     current = datetime.utcnow()
     past_24_hours = current - timedelta(hours=24)
 
-    activity2 = session.query(Activity).filter(Activity.entry_date.between(current, past_24_hours))
+    activity2 = session.query(Activity).filter(Activity.entry_date.between(current, 
+                                                                           past_24_hours))
 
     print activity2
     print activity2.all()
@@ -147,9 +150,9 @@ def add_activity():
     if request.method == 'POST':
         try:
 
-            #start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
-            #end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
-            #duration = str(end_time - start_time)
+            # start_time = datetime.strptime(str(form.start_time.data), '%b %d %Y %I:%M%p')
+            # end_time = datetime.strptime(str(form.end_time.data), '%b %d %Y %I:%M%p')
+            # duration = str(end_time - start_time)
 
             if form.waypoints.data:
                 waypoints = form.waypoints.data
@@ -160,7 +163,7 @@ def add_activity():
                                 activity=form.activity.data,
                                 start_time=form.start_time.data,
                                 end_time=form.end_time.data,
-                                #duration=form.end_time.data - form.start_time.data,
+                                # duration=form.end_time.data - form.start_time.data,
                                 start_location=form.start_location.data,
                                 end_location=form.end_location.data,
                                 notes=form.notes.data,

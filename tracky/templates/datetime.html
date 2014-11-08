@@ -3,16 +3,13 @@
 
 {% block content %}
      <form>
-        <input type="date">
-    </form>
+        <input type="date" class="datepicker"></input>
+
+     </form>
 
     <script>
-        var i = document.createElement("input");
-        i.setAttribute("type", "date");
-        if (i.type == "text") {
-    // No native date picker support :(
-    // Use Dojo/jQueryUI/YUI/Closure to create one,
-    // then dynamically replace that <input> element.
-            }
-</script>
+
+    $('.datepicker').datepicker()
+
+    </script>
 {% endblock %}

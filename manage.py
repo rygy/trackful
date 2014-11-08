@@ -51,11 +51,6 @@ def seed_activites():
     session.commit()
 
 
-#@manager.command()
-#def seed_meals():
-
-
-
 class DB(object):
     def __init__(self, metadata):
         self.metadata = metadata
